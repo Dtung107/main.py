@@ -112,7 +112,15 @@ async function install(body: any) {
     const py = await ensurePyodide();
     py.globals.set('__pkg', name);
     py.globals.set('__upgrade', upgrade);
-    await py.runPythonAsync(`import micropip\nawait micropip.install(__pkg, reinstall=__upgrade)`);
+    await py.runPythonAsync(
+      `import micropip\n` +
+        `if __upgrade:\n` +
+        `    try:\n` +
+        `        micropip.uninstall(__pkg)\n` +
+        `    except Exception:\n` +
+        `        pass\n` +
+        `await micropip.install(__pkg)`
+    );
 
     const base = name.split(/[\[<>=~! ,]/)[0];
     const version = await getVersion(py, base);
@@ -191,3 +199,4 @@ if (isNativeApp()) {
 }
 
 export {};
+
