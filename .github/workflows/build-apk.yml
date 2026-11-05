@@ -1,3 +1,4 @@
+
 name: Build Android APK for Pydroid 3 Web
 
 on:
@@ -34,6 +35,8 @@ jobs:
 
       - name: 4. Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: ''
 
       - name: 5. Install Dependencies
         run: npm install --legacy-peer-deps
