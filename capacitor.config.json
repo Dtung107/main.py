@@ -2,14 +2,13 @@
   "appId": "com.pydroid3.webide",
   "appName": "Pydroid 3 Web",
   "webDir": "dist",
-  "bundledWebRuntime": false,
   "server": {
     "androidScheme": "https",
     "cleartext": true
   },
   "android": {
     "allowMixedContent": true,
-    "captureInput": true,
+    "captureInput": false,
     "webContentsDebuggingEnabled": true
   }
 }
