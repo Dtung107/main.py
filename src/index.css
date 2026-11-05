@@ -9,6 +9,23 @@
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* Chừa chỗ cho thanh trạng thái (sóng, wifi, pin) phía trên
+     và thanh điều hướng phía dưới trên điện thoại Android */
+  #root {
+    box-sizing: border-box;
+    background: #181822;
+    padding-top: max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px));
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), var(--safe-area-inset-bottom, 0px));
+    padding-left: max(env(safe-area-inset-left, 0px), var(--safe-area-inset-left, 0px));
+    padding-right: max(env(safe-area-inset-right, 0px), var(--safe-area-inset-right, 0px));
+  }
+
+  /* Giao diện chính dùng h-screen (100vh) nên phải ép về 100% của #root */
+  #root > div {
+    height: 100% !important;
+    width: 100% !important;
+  }
 }
 
 /* Custom modern scrollbars */
